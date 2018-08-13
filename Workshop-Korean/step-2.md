@@ -1,18 +1,18 @@
-## Step 2: Add branching logic to state machine
+## 2 단계 : 상태 머신에 분기 논리를 추가합니다.
 
-The first step of state machine gives us more information about the image file, which can be used to determine what set of further actions the workflow needs to take, e.g. if the file supplied is a format not supported by our image recognition service, send it to another Lambda function that performs type conversion or simply send an error notification to the customer and terminate the workflow.
+상태 머신의 첫 번째 단계는 이미지 파일에 대한 추가 정보를 제공합니다.이 파일은 워크 플로에서 수행해야하는 추가 작업 집합을 결정하는 데 사용할 수 있습니다. 예를 들어 제공된 파일이 이미지 인식 서비스에서 지원하지 않는 형식 인 경우 보내세요 유형 변환을 수행하거나 단순히 고객에게 오류 통지를 보내고 워크 플로를 종료하는 다른 람다 함수로 전달할 수 있습니다.
 
-There are two mechanisms in AWS Step Functions that enables branching: [Choice State](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-states-choice.html)  and [Error Try/Catches](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-errors.html). Choice State allows choosing the next state based on if/else or case/switch conditions (supports a combination of And Or Not and = > < operators ) on the input data. Error Try/Catches allows choosing the next state depending on the type of error thrown by the current execution.
+분기를 가능하게하는 AWS 단계 함수에는 [선택 상태](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-states-choice.html)와 [오류 Try / Catches](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-errors.html)를 참조하세요. 선택 상태는 if / else 또는 case / switch 조건에 기반하여 다음 상태를 선택할 수 있습니다 (And 및 Not 및 => <연산자)의 조합을 지원합니다. 오류 시도 / 캐치를 사용하면 현재 실행에 의해 발생 된 오류 유형에 따라 다음 상태를 선택할 수 있습니다.
 
-In this step, we will add input validation to the state machine by leveraging both Error Try/Catches and Choice State. By the end of this step the state machine will look like this:
+이 단계에서는 Error Try/Catches 및 Choice State를 모두 사용하여 상태 확인 기능을 상태 머신에 추가합니다. 이 단계가 끝나면 상태 머신은 다음과 같이 보입니다.
 
 <img src="images/2-branching-logic-state-machine.png" width="50%">
 
-### Step 2A: Add branching to State Machine definition
+### 2A 단계 : State Machine 정의에 분기 추가
 
-Consider in our scenario we only support JPEG and PNG formats. The image analysis Lambda function can detect image formats, so we can use a Choice State after the first step to evaluate the output from the metadata extraction and make branching decisions. For other file types the image processing library does not even have an analyzer for, an exception is thrown from the Lambda function. So here we can combine using Choice State and Error Try/Catch. 
+시나리오에서는 JPEG 및 PNG 형식 만 지원합니다. 이미지 분석 람다 함수는 이미지 포맷을 감지 할 수 있으므로 첫 번째 단계 이후에 선택 상태를 사용하여 메타 데이터 추출의 결과를 평가하고 분기 결정을 내릴 수 있습니다. 이미지 처리 라이브러리에는 분석기가없는 다른 파일 유형의 경우 람다 함수에서 예외가 발생합니다. 이제 Choice State와 Error Try / Catch를 사용하여 결합 할 수 있습니다.
 
-1. Go back to the text editor that you had the state machine definition. It should look like this:
+1. 상태 머신 정의가있는 텍스트 편집기로 돌아가세요. 다음과 같이 표시되어야합니다.
 	
 	```JSON
 	{
@@ -29,9 +29,9 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	}
 	```
 
-1. The next step we are going to add to our state machine is the fail state,**NotSupportedImageType**. This step will terminate and mark failure for executions that cannot proceed because the image type is not supported.
-	
-	Add a**Fail**state following the**ExtractImageMetadata**state in the state machine definition:
+1. 상태 시스템에 추가 할 다음 단계는 실패 상태 인 **NotSupportedImageType**입니다. 이 단계는 종료되고 이미지 유형이 지원되지 않기 때문에 진행할 수없는 실행에 대한 실패를 표시합니다.
+
+	상태 머신 정의에 **ExtractImageMetadata** 상태 다음에 **Fail** 상태를 추가하세요.
 
 	```JSON
 		,
@@ -42,9 +42,9 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	    },
 	```
 
-1. Next, we add an error try/catch to the**ExtractImageMetadata**step pointing to the fail state. The lambda function is written so that when it encounters a file type (e.g. txt) that it can't parse as an image, it will throw an error of type `ImageIdentifyError`. Using the Error try/catch functionality of Step Functions, we can configure the state machine to transition to**NotSupportedImageType**Fail state when this error happens.
+1. 다음으로, 오류 상태를 가리키는 **ExtractImageMetadata** 단계에 try / catch 오류를 추가합니다. 람다 함수는 이미지로 파싱 할 수없는 파일 유형 (예 : txt)을 만나면`ImageIdentifyError` 유형의 오류를 발생 시키도록 작성되었습니다. Step Functions의 Error try / catch 기능을 사용하여이 오류가 발생할 때 **NotSupportedImageType** Fail 상태로 전환하도록 상태 시스템을 구성 할 수 있습니다.
 
-	Add a**Catch**block to the**ExtractImageMetadata**step:
+	**ExtractImageMetadata** 단계에 **Catch** 블록을 추가하세요.
 	
 	<pre>
 	    "ExtractImageMetadata": {
@@ -62,11 +62,11 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	    }
 	</pre>
 
-	> See this [blog post](https://aws.amazon.com/blogs/compute/automating-aws-lambda-function-error-handling-with-aws-step-functions/) on how to define custom error codes in Lambda functions in different languages. 
-	 
-1. To ensure only JPEG and PNG images are allowed to be further processed, we create a Choice state that directs to the *NotSupportedImageType* Fail state when the image format is not JPEG or PNG. 
+	> 맞춤 오류 코드를 정의하는 방법은이 [블로그 게시물](https://aws.amazon.com/blogs/compute/automating-aws-lambda-function-error-handling-with-aws-step-functions/)을 참조하세요. 람다 함수에서 다른 언어로.
 
-	Add a**Choice**state after the**NotSupportedImageType**fail state:
+1. JPEG 및 PNG 이미지 만 추가로 처리 할 수 ​​있도록하려면 이미지 형식이 JPEG 또는 PNG가 아닌 경우 *NotSupportedImageType* Fail 상태로 지정하는 선택 상태를 만듭니다.
+
+	**NotSupportedImageType** 실패 상태 다음에 **Choice** 상태를 추가하세요.
 
 	```JSON
 	  "ImageTypeCheck": {
@@ -87,7 +87,7 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	  },
 	```
 	
-	Also, because the**Choice**state should follow the**ExtractImageMetadata**state, update the first state and replace the `"End": true` with a pointer to the choice state as next step: `"Next": "ImageTypeCheck"`:
+	또한 **Choice** 상태는 **ExtractImageMetadata** 상태를 따라야하므로 첫 번째 상태를 업데이트하고 다음 단계로 선택 상태에 대한 포인터로 "End": true를 대체하세요. "ImageTypeCheck"`:
 
 	<pre>
 		"ExtractImageMetadata":{  
@@ -110,7 +110,7 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 
 	
 	
-1. The Choice state must not be an end state in a Step Functions state machine. Therefore, we need to have a state following the choice state. For now, create a placeholder**Pass**state that will be replaced by a parallel processing step (Note we already have a `Next` pointer to this state from the**ImageTypeCheck**state):
+1. 선택 사항 상태는 단계 기능 상태 시스템의 종료 상태가 아니어야합니다. 따라서 우리는 선택 상태 다음 상태를 가져야합니다. 지금은 자리 표시 자 **패스** 상태를 만들어 병렬 처리 단계로 바꿉니다 (**ImageTypeCheck** 상태에서이 상태에 대한 '다음'포인터가 이미 있음).
 	
 	``````JSON
 	    "Parallel": {
@@ -122,27 +122,27 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	    }
     ```
 	
-1. Check your JSON is properly formatted by leveraging a JSON validator and formatter like [this one](https://jsonformatter.curiousconcept.com/)
+1. [this one](https://jsonformatter.curiousconcept.com/)과 같은 JSON 유효성 검사기와 포맷터를 사용하여 JSON 형식이 올바른지 확인하세요.
 
 
-### Step 2B: Update the AWS Step Functions state machine
+### 2B 단계 : AWS 스텝 함수 상태 머신 업데이트
 
-1. Go to [AWS Step Functions management console](http://console.aws.amazon.com/states/home). Make sure the AWS Region selection matches the one you have been working with so far.
+1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요. AWS Region 선택이 지금까지 작업 한 AWS Region 선택과 일치하는지 확인하세요.
 
-1. Select the `ImageProcessing` state machine. Click on**Edit state machine**
+1. 'ImageProcessing' 상태 머신을 선택하세요. **상태 시스템 편집**을 클릭하세요.
 
-1. Scroll down and paste in the JSON generated from Step 2A
+1. 아래로 스크롤하여 2A 단계에서 생성 된 JSON에 붙여 넣습니다.
 
-1. You can click on the &#x21ba; icon next to**Visual Workflow**to refresh the visual representation of the state machine:
+1. &#x21ba; **Visual Workflow** 옆의 아이콘을 클릭하여 상태 시스템의 시각적 표현을 새로 고칩니다.
 
 	<img src="images/2b-step-console-update-preview.png" width="90%">
 
-1. Click**Update and start execution**
-	
+1. **업데이트를 클릭하고 실행을 시작하세요.**
 
-### Step 2C: Test the state machine execution
 
-1. Test this new state machine with the same input you did in**Step 1C**
+### 2C 단계 : 상태 머신 실행 테스트
+
+1. **Step 1C에서 했던 것과 동일한 입력으로이 새로운 상태 머신을 테스트하세요.**
 
 	```JSON
 	{
@@ -151,18 +151,18 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	}
 	```
 
-	You will see that the execution succeededs and the workflow shows this output:
+	실행이 성공했고 작업 흐름에 다음 출력이 표시됩니다.
 	
 	```JSON
 	{
 	  "output": "This is a placeholder we will replace it with a Task state soon"
 	}
 	```
-	Also, you will see that the workflow has passed through all the steps till the end:
+	또한 워크 플로가 끝날 때까지 모든 단계를 거쳤 음을 알 수 있습니다.
 	
 	<img src="images/2c-test-choice-test-succeeded.png" width="50%">
 
-1. Now, let's try it with a different input (*.tiff* image type):
+1. 이제 다른 입력 (*.tiff* 이미지 유형)으로 시도해 보겠습니다.
 
 	```JSON
 	{
@@ -170,7 +170,7 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	  "s3Key": "tests/2_lake_snow.tiff"
 	}
 	```
-	We used an unsupported image type! Here is the output we see:
+	지원되지 않는 이미지 유형이 사용되었습니다. 다음은 우리가 볼 수있는 결과입니다.
 	
 	```JSON
 	{
@@ -178,11 +178,11 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	  "cause": "Image type not supported!"
 	}
 	```
-	Hence, the workflow of the execution confirms our mistake:
+	따라서 실행 워크 플로는 우리의 실수를 확인합니다.
 	
 	<img src="images/2c-test-choice-test-failed.png" width="50%">
 
-1. Test it with a txt file that we have wrongly appended with .jpg suffix:
+1. .jpg 접미사를 잘못 추가 한 txt 파일로 테스트하세요.
 
 	```JSON
 	{
@@ -191,14 +191,14 @@ Consider in our scenario we only support JPEG and PNG formats. The image analysi
 	}
 	```
 	
-	We expect the *ExtractImageMetadata* lambda function to throw an `ImageIdentifyError`, which will direct the flow to the fail state, without even hitting the**Choice**state
+	우리는 *ExtractImageMetadata* lambda 함수가 `ImageIdentifyError`를 던져 버릴 것을 기대합니다. ImageIdentifyError는 **Choice** 상태를 치지 않고 플로우를 실패 상태로 유도합니다
 	
 	<img src="images/2c-test-catch-failed.png" width="50%">
 	
 
 ### Final JSON
 
-If you had issues along the way and your state machine does not work as expected, double check that your JSON definition is consistent with the one below. 
+도중에 문제가 발생하여 상태 시스템이 예상대로 작동하지 않으면 JSON 정의가 아래 내용과 일치하는지 다시 확인하세요.
 <details>
 <summary><strong> Expand to see JSON definition</strong></summary><p>
 
@@ -258,11 +258,11 @@ If you had issues along the way and your state machine does not work as expected
 ```
 </details>
 
-If problems persist, you can always use that final JSON to create a working state machine. Just make sure to update the AWS Region and AWS Account ID in the Lambda function ARN to reflect your setup.
+문제가 지속되면 항상 최종 JSON을 사용하여 작동하는 상태 시스템을 만들 수 있습니다. 설정을 반영하도록 람다 함수 ARN의 AWS 지역 및 AWS 계정 ID를 업데이트하세요.
 
 
-### Next step
-You are now ready to move on to [Step 3](step-3.md)!
+### 다음 단계
+이제 [Step 3](step-3.md)로 이동할 준비가되었습니다!
 
 
 

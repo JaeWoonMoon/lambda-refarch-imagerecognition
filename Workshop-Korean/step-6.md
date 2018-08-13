@@ -4,7 +4,7 @@
 
 ### 6A : 사진 처리 웹 응용 프로그램 설정
 
-워크샵 테스트를 완료하려면 AngularJS 웹 응용 프로그램을 사용하여 사진 앨범을 만들고 사진을 업로드하십시오.
+워크샵 테스트를 완료하려면 AngularJS 웹 응용 프로그램을 사용하여 사진 앨범을 만들고 사진을 업로드하세요.
 
 이 섹션에서는 웹 사이트 호스팅을 위해 구성된 S3 버킷에 웹 애플리케이션을 패키징하고 배포하기 위해 클라우드 정보 템플릿을 사용할 것입니다.
 
@@ -21,33 +21,33 @@ Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch 
 
 #### CloudFormation 실행 지침
 
-1. 위의**Launch Stack**링크를 클릭하십시오 (다른 리소스를 시작한 지역을 선택하십시오)
+1. 위의**Launch Stack**링크를 클릭하세요 (다른 리소스를 시작한 지역을 선택하세요)
 
-1. Select Template 페이지에서**Next**를 클릭하십시오.
+1. Select Template 페이지에서**Next**를 클릭하세요.
 
 1. 세부 정보 지정 페이지에서 모든 기본값을 그대로두고**다음**을 클릭합니다.
 
-1. 옵션 페이지에서 기본값을 모두 그대로두고**다음**을 클릭하십시오.
+1. 옵션 페이지에서 기본값을 모두 그대로두고**다음**을 클릭하세요.
 
 1. 검토 페이지에서 확인란을 선택하여 CloudFormation이 IAM 리소스를 만들고**변경 집합 만들기**를 클릭하는지 확인합니다.
 	! [IAM 스크린 샷 승인] (./ images / 0b-cfn-create-change-set.png)
 
 
-1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고**실행**을 클릭하십시오.
+1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고**실행**을 클릭하세요.
 	! [변경 세트 실행 스크린 샷] (./ images / 0b-cfn-execute-change-set.png)
 
-1.`sfn-workshop-setup-webapp` 스택이`CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리십시오.
+1.`sfn-workshop-setup-webapp` 스택이`CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요.
 
 	스택을 완료하는 데 1 분 정도 걸립니다. 그것의 일부로, 웹 애플리케이션 소스를 대상 버킷으로 복사하고 이것이 배달 pipleline을 트리거합니다.
 
-1. [AWS CodePipeline 관리 콘솔](http://console.aws.amazon.com/codepipeline/home)로 이동하십시오. `sfn-workshop-pipeline`으로 식별 된 파이프 라인을 클릭하고 성공적으로 완료되었는지 확인하십시오.
+1. [AWS CodePipeline 관리 콘솔](http://console.aws.amazon.com/codepipeline/home)로 이동하세요. `sfn-workshop-pipeline`으로 식별 된 파이프 라인을 클릭하고 성공적으로 완료되었는지 확인하세요.
 	<img alt = "파이프 라인 스크린 샷"src="./ images / 0b-code-pipeline.png" width="50%">
 
-1. [AWS CloudFormation 관리 콘솔](http://console.aws.amazon.com/cloudformation/home)로 이동하십시오. `sfn-workshop-setup-webapp` 스택을 선택하고 Outputs 탭을 클릭하십시오. 'WebsiteURL` 키는**미디어 공유 웹 응용 프로그램**에 액세스하기위한 링크를 가리 킵니다.**
+1. [AWS CloudFormation 관리 콘솔](http://console.aws.amazon.com/cloudformation/home)로 이동하세요. `sfn-workshop-setup-webapp` 스택을 선택하고 Outputs 탭을 클릭하세요. 'WebsiteURL` 키는**미디어 공유 웹 응용 프로그램**에 액세스하기위한 링크를 가리 킵니다.**
 
 	! [CloudFormation 출력 스크린 샷] (./ images / 0b-cfn-outputs.png)
 
-1. 해당 링크를 클릭하여**미디어 공유 웹 응용 프로그램**으로 이동하십시오.
+1. 해당 링크를 클릭하여**미디어 공유 웹 응용 프로그램**으로 이동하세요.
 **참고 : Chrome 브라우저를 사용하여 웹 응용 프로그램을 열어야합니다.**
 
 	! [미디어 공유 웹 응용 프로그램 스크린 샷] (./ images / 0b-webapp.png)
@@ -63,7 +63,7 @@ Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch 
 사용자 이름은 업로드 된 이미지의 소유권 메타 데이터를 저장하는 데 사용됩니다.
 
 ##### 앨범 목록
-새 앨범을 만들거나 기존 앨범을 선택하여 이미지를 업로드하십시오.
+새 앨범을 만들거나 기존 앨범을 선택하여 이미지를 업로드하세요.
 
 ##### 사진 갤러리
 다음과 같은 경우 이미지 업로드 및 상태 업데이트보기 :
@@ -81,7 +81,7 @@ Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch 
 
 이제 Step Functions를 사용하여 엔드 투 엔드 이미지 처리 워크 플로우를 구축 했으므로 재미있는 과제를 준비 할 수 있습니까?
 
-[여분 크레딧] (./ additional-steps.md) 섹션을 참조하십시오.
+[여분 크레딧] (./ additional-steps.md) 섹션을 참조하세요.
 
-이 워크샵을 위해 만든 리소스를 정리할 준비가되면 [정리] (./ clean-up.md) 지침을 참조하십시오.
+이 워크샵을 위해 만든 리소스를 정리할 준비가되면 [정리] (./ clean-up.md) 지침을 참조하세요.
 
