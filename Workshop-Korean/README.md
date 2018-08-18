@@ -1,4 +1,4 @@
-# Hands-On : Amazon Rekognition를 이용한 이미지 인식 태깅 서비스 만들기
+# AWSKRUG Data Analysis hands-on #3 : Amazon Rekognition를 이용한 이미지 인식 태깅 서비스 만들기
 
 이 핸즈온에서는 AWS Step Functions를 사용하여 서버리스 이미지 인식 프로세싱 워크 플로우를 단계별로 구축하는 방법을 배우게됩니다.
 
