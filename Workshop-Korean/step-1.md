@@ -49,7 +49,7 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 ### 1B 단계 : 초기 AWS 단계 함수 작성 상태 머신
 
-1. [IAM](http://https://console.aws.amazon.com/iam/home)로 이동하세요.
+1. [IAM](https://console.aws.amazon.com/iam/home) 로 이동하세요.
 
 1. 역활 메뉴에서 **역할 만들기** 버튼을 클릭하세요.
 
@@ -57,9 +57,9 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 1. Attached 권한 정책에서 기본값으로 두고 **다음: 검토**을 클릭하세요.
 
-1. 역할 이름을 `StepFunctionsLambdaRole`을 입력하고 **역활 만들기**를 클릭하세요.
+1. 역할 이름을 `StepFunctionsLambdaRole`을 입력하고 **역할 만들기**를 클릭하세요.
 
-1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요.
+1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home) 로 이동하세요.
 
 1. 이전에 AWS 단계 함수를 사용하지 않았다면 시작 페이지를 볼 수 있습니다. 이 경우 **시작하기**를 클릭하면 새 상태 머신을 만드는 페이지로 연결됩니다. 그렇지 않으면 **상태 머신 만들기**버튼을 클릭하세요.
 
@@ -82,11 +82,11 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 ### 1C 단계 : 상태 머신 실행 테스트
 
-1.**새 실행**버튼을 클릭하여 새 실행을 시작합니다.
+1. **시작 실행** 버튼을 클릭하세요.
 
 1. AWS Step Functions 상태 머신으로 전달 된 입력 데이터를 처리하도록 지정합니다.
 
-   단계 함수 상태 머신의 각 실행에는 고유 한 ID가 있습니다. 실행을 시작할 때 하나를 지정하거나 서비스가 생성하도록 할 수 있습니다. "실행 ID를 여기에 입력하세요."라는 텍스트 필드에서 실행 ID를 지정하거나 비워 둘 수 있습니다.
+   단계 함수 상태 머신의 각 실행에는 고유 한 ID가 있습니다. 실행을 시작할 때 하나를 지정하거나 서비스가 생성하도록 할 수 있습니다. "실행 이름 입력" 라는 텍스트 필드에 실행 이름을 지정하거나 비워 둘 수 있습니다.
 
 	입력 데이터의 경우 다음 JSON 템플릿을 사용하세요. 자신의 값으로 s3Bucket 필드를 대체하세요.
 
@@ -99,16 +99,16 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 	> 's3Bucket' 및 's3Key` 필드는 Amazon S3 버킷명과 사진이 저장되는 위치를 알려줍니다.
 
-	`s3Bucket` 필드의 경우, **sfn-workshop-setup**스택에서 **출력**탭에 'PhotoRepoS3Bucket'키의 값을 보세요.
+	`s3Bucket` 필드의 경우, **sfn-workshop-setup** 스택에서 **출력** 탭에 'PhotoRepoS3Bucket' 키의 값을 보세요.
 
-	테스트 입력 JSON을 텍스트 편집기 (Sublime, Notepad++ 등)에 저장하는 것이 좋습니다. 이후 단계에서 다시 사용하기 때문입니다.
+	테스트 입력 JSON을 텍스트 편집기 (Sublime, Notepad++ 등)에 저장하세요. 이후 단계에서 다시 사용하기 때문입니다.
 
 	**실행 시작**을 클릭하세요.
 
 
 	<img src="images/1c-start-new-execution.png" width="90%">
 
-1. 이제 상태 머신 실행 상태를 볼 수 있습니다. 콘솔에서 여러 탭을 탐색하여이 실행을 위해 사용할 수있는 정보를 확인하세요.
+1. 이제 상태 머신 실행 상태를 볼 수 있습니다. 콘솔에서 여러 탭을 탐색하여 사용할 수 있는 정보를 확인하세요.
 
 	<img src="images/1c-execution.png" width="90%">
 
@@ -117,7 +117,7 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 방금 만든 상태 머신의 **출력**을 살펴보면 람다 함수에 의해 이미지에서 추출 된 메타 데이터에 대한 유용한 정보가 많이 있지만, 이 단계로 전달 된 원래 입력 데이터? 예를 들어 후속 단계에서는 이미지가 저장된 s3Bucket 및 s3Key에 대한 참조가 필요합니다.
 
-한 가지 옵션은 람다 함수 자체에이 논리를 작성하여 입력 데이터를 람다 함수의 출력으로 복사하는 것입니다. 또는 단계 기능은 우리가 활용할 수있는 기능을 제공합니다 -**경로**. 이 기능을 사용하면 작업에 전달 된 입력을 조작하고 JSON 경로 표현식을 사용하여 다음 상태로 전달되는 작업의 출력을 조작 할 수 있습니다.
+한 가지 옵션은 람다 함수 자체에이 논리를 작성하여 입력 데이터를 람다 함수의 출력으로 복사하는 것입니다. 또는 단계 기능은 우리가 활용할 수있는 기능을 제공합니다 **경로**. 이 기능을 사용하면 작업에 전달 된 입력을 조작하고 JSON 경로 표현식을 사용하여 다음 상태로 전달되는 작업의 출력을 조작 할 수 있습니다.
 
 **경로** 필드에 세 가지 유형이 있습니다. **InputPath**, **ResultPath**, **OutputPath**. ([documentation](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-paths.html) 및 [Amazon States Language specification.](https://states-language.net/spec.html#path))
 
@@ -138,7 +138,7 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 	<img src="images/1d-edit.png" width="90%">
 
-1. 속성 "ResultPath": "$.extractedMetadata"를 태스크에 추가하세요. 마지막 JSON은 다음과 같아야합니다.
+1. 속성 `"ResultPath": "$.extractedMetadata"`를 테스크에 추가하세요. 마지막 JSON은 다음과 같아야합니다.
 
 	```javascript
 	{
