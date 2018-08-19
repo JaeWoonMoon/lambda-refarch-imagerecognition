@@ -12,16 +12,12 @@
 
 Region| Code | Launch
 ------|------|-------
-US East (Ohio)| <span style="font-family:'Courier';">us-east-2</span> | [![Launch Step 6 in us-east-2](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-us-east-2.amazonaws.com/sfn-image-workshop-us-east-2/cloudformation/step0-webapp.yaml)
-US East (N. Virginia) | <span style="font-family:'Courier';">us-east-1</span> | [![Launch Step 6 in us-east-1](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3.amazonaws.com/sfn-image-workshop-us-east-1/cloudformation/step0-webapp.yaml)
-US West (Oregon) | <span style="font-family:'Courier';">us-west-2</span> | [![Launch Step 6 in us-west-2](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-us-west-2.amazonaws.com/sfn-image-workshop-us-west-2/cloudformation/step0-webapp.yaml)
-EU (Ireland) | <span style="font-family:'Courier';">eu-west-1</span> | [![Launch Step 6 in eu-west-1](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-eu-west-1.amazonaws.com/sfn-image-workshop-eu-west-1/cloudformation/step0-webapp.yaml)
-Tokyo | <span style="font-family:'Courier';">ap-northeast-1</span> | [![Launch Step 6 in ap-northeast-1](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-ap-northeast-1.amazonaws.com/sfn-image-workshop-ap-northeast-1/cloudformation/step0-webapp.yaml)
-Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch Step 6 in ap-southeast-2](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-ap-southeast-2.amazonaws.com/sfn-image-workshop-ap-southeast-2/cloudformation/step0-webapp.yaml)
+Tokyo | <span style="font-family:'Courier';">ap-northeast-2</span> | [![Launch Step 6 in ap-northeast-2](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-ap-northeast-2.amazonaws.com/sfn-image-workshop-ap-northeast-2/cloudformation/step0-webapp.yaml)
+
 
 #### CloudFormation 실행 지침
 
-1. 위의**Launch Stack**링크를 클릭하세요 (다른 리소스를 시작한 지역을 선택하세요)
+1. 위의 **Launch Stack** 링크를 클릭하세요.
 
 1. Select Template 페이지에서**Next**를 클릭하세요.
 
@@ -30,29 +26,29 @@ Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch 
 1. 옵션 페이지에서 기본값을 모두 그대로두고**다음**을 클릭하세요.
 
 1. 검토 페이지에서 확인란을 선택하여 CloudFormation이 IAM 리소스를 만들고**변경 집합 만들기**를 클릭하는지 확인합니다.
-	! [IAM 스크린 샷 승인] (./ images / 0b-cfn-create-change-set.png)
+	![IAM 스크린 샷 승인](./images/b-cfn-create-change-set.png)
 
 
 1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고**실행**을 클릭하세요.
-	! [변경 세트 실행 스크린 샷] (./ images / 0b-cfn-execute-change-set.png)
+	![변경 세트 실행 스크린 샷](./images/0b-cfn-execute-change-set.png)
 
-1.`sfn-workshop-setup-webapp` 스택이`CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요.
+1. `sfn-workshop-setup-webapp` 스택이 `CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요.
 
 	스택을 완료하는 데 1 분 정도 걸립니다. 그것의 일부로, 웹 애플리케이션 소스를 대상 버킷으로 복사하고 이것이 배달 pipleline을 트리거합니다.
 
 1. [AWS CodePipeline 관리 콘솔](http://console.aws.amazon.com/codepipeline/home)로 이동하세요. `sfn-workshop-pipeline`으로 식별 된 파이프 라인을 클릭하고 성공적으로 완료되었는지 확인하세요.
-	<img alt = "파이프 라인 스크린 샷"src="./ images / 0b-code-pipeline.png" width="50%">
+	<img alt="파이프 라인 스크린 샷" src="./images/0b-code-pipeline.png" width="50%">
 
-1. [AWS CloudFormation 관리 콘솔](http://console.aws.amazon.com/cloudformation/home)로 이동하세요. `sfn-workshop-setup-webapp` 스택을 선택하고 Outputs 탭을 클릭하세요. 'WebsiteURL` 키는**미디어 공유 웹 응용 프로그램**에 액세스하기위한 링크를 가리 킵니다.**
+1. [AWS CloudFormation 관리 콘솔](http://console.aws.amazon.com/cloudformation/home)로 이동하세요. `sfn-workshop-setup-webapp` 스택을 선택하고 Outputs 탭을 클릭하세요. 'WebsiteURL` 키는 **미디어 공유 웹 응용 프로그램**에 액세스하기위한 링크를 가리 킵니다.**
 
-	! [CloudFormation 출력 스크린 샷] (./ images / 0b-cfn-outputs.png)
+	![CloudFormation 출력 스크린 샷](./images/0b-cfn-outputs.png)
 
-1. 해당 링크를 클릭하여**미디어 공유 웹 응용 프로그램**으로 이동하세요.
+1. 해당 링크를 클릭하여 **미디어 공유 웹 응용 프로그램**으로 이동하세요.
 **참고 : Chrome 브라우저를 사용하여 웹 응용 프로그램을 열어야합니다.**
 
-	! [미디어 공유 웹 응용 프로그램 스크린 샷] (./ images / 0b-webapp.png)
+	![미디어 공유 웹 응용 프로그램 스크린 샷](./images/0b-webapp.png)
 
-</ p> </ details>
+</p> </details>
 
 
 
@@ -74,7 +70,7 @@ Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch 
 
 단계 함수 실행에서 생성 된 축소판과 함께 추출 된 이미지 메타 데이터 및 인식 된 태그의 샘플 세트가 업로드 된 각 이미지에 대해 표시됩니다.
 
-<img alt = "파이프 라인 스크린 샷"src="./ images / web-app-screenshot.png" width="90%">
+<img alt="파이프 라인 스크린 샷" src="./images/web-app-screenshot.png" width="90%">
 
 
 ### 다음 단계 : 추가 학점
@@ -83,5 +79,5 @@ Sydney | <span style="font-family:'Courier';">ap-southeast-2</span> | [![Launch 
 
 [여분 크레딧](./additional-steps.md) 섹션을 참조하세요.
 
-이 핸즈온을 위해 만든 리소스를 정리할 준비가되면 [정리](./clean-up.md) 지침을 참조하세요.
+이 핸즈온을 위해 만든 리소스를 정리할 준비가 되면 [정리](./clean-up.md) 지침을 참조하세요.
 

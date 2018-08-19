@@ -69,10 +69,9 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 	![IAM 역할 선택](./images/3-create-statemachine-select-role.png)
 
-1. 섹션이 나타날 때까지 아래로 스크롤하세요. **Step3 : 코드 및 시각 워크 플로우를 검토하세요.**
-	1A 단계에서 내 보낸 JSON에 붙여 넣기
+1. 1A 단계에서 확인한 JSON에 붙여 넣기
 
-1. &#x21ba; **Visual Workflow**옆의 아이콘을 클릭하여 상태 머신의 시각적 표현을 새로 고칩니다.
+1. **Visual Workflow** 옆의 &#x21ba; 아이콘을 클릭하여 상태 머신의 시각적 표현을 새로 고칩니다.
 
 	<img src="images/1b-step-console-preview.png" width="90%">
 
@@ -169,4 +168,4 @@ JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [stateli
 
 <img src="images/1d-output-w-resultpath.png" width="90%">
 
-이제 [Step 2](step-2.md)로 이동할 준비가 되었습니다!
+이제 [2 단계](step-2.md)로 이동할 준비가 되었습니다!

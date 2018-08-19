@@ -4,9 +4,9 @@
 
 이 핸즈온에서 만들 AWS Step Functions 상태 머신은 각 단계에 대한 로직을 구현하는 다수의 람다 함수를 조정합니다. 람다 함수 중 일부는 Amazon S3 버킷 또는 Amazon DynamoDB 테이블과 같은 AWS 리소스 및 데이터 저장소의 존재에 의존합니다.
 
-이 섹션에서는 AWS 람다 함수와 필요한 모든 리소스를 프로비저닝하기 위해 클라우드 템플릿을 사용합니다.
+이 섹션에서는 AWS 람다 함수와 필요한 모든 리소스를 생성하기 위해 `CloudFormation`을 사용합니다.
 
-이 단계에서 어떤 리소스가 설정되어 있는지 이해하려면 아래 다이어그램을 참조하세요. 이 핸즈온에서는 처리 작업을 수행하는 람다 함수를 조정하기 위해 단계 함수 상태 머신 (중간에 회색으로 표시됨)을 빌드합니다.
+이 단계에서 어떤 리소스가 설정되어 있는지 이해하려면 아래 구성도를 참조하세요. 이 핸즈온에서는 처리 작업을 수행하는 람다 함수를 조정하기 위해 단계 함수 상태 머신 (중간에 회색으로 표시됨)을 빌드합니다.
 <br/>
 
 <img src="images/0-resource-setup.png" width="65%" height="65%">
@@ -39,7 +39,7 @@ Region| Code | Launch
 1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고 **실행**을 클릭하세요.
 	![Change Change Set Screenshot](./images/0a-cfn-execute-change-set.png)
 
-1. `sfn-workshop-setup` 스택이 `CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요. (새로 생성 된 스택을 보려면 refresh 버튼을 클릭해야 할 수도 있습니다).
+1. `sfn-workshop-setup` 스택이 `CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요. (새로 생성된 스택을 보려면 refresh 버튼을 클릭해야 할 수도 있습니다).
 </details>
 
 	
