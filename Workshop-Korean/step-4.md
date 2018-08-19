@@ -67,7 +67,7 @@
  	<img src="images/4c-ddb-imagemetadata-item.png" width="90%">
 
 
-### Final JSON
+### 최종 JSON
 <details>
 <summary><strong> JSON 정의를 확장합니다.</strong></summary><p>
 

@@ -1,6 +1,6 @@
-## 1 단계 : AWS 스텝 함수에 첫 번째 람다 스텝 추가하기 상태 머신
+## 1 단계 : AWS Step Functions 상태 머신 추가
 
-AWS Step Functions 상태 머신을 작성하여 처리 단계를 조정하려면 단일 단계가 포함 된 머신부터 시작합니다.
+AWS Step Functions 상태 머신을 작성하여 처리 단계를 조정하려면 단일 단계가 포함된 머신부터 시작합니다.
 
 단계 함수 상태 머신은 [Amazon States Language](https://states-language.net/spec.html)를 사용하여 JSON에 정의됩니다. 단일 단계로 상태 머신을 정의하는 아래의 JSON을 살펴보세요.
 
@@ -20,7 +20,7 @@ AWS Step Functions 상태 머신을 작성하여 처리 단계를 조정하려�
 
 이 상태 머신이 시작되면 AWS Step Functions 인터프리터는 시작 상태를 식별하여 실행을 시작합니다. 이 상태를 실행 한 다음 상태가 끝 상태로 표시되는지 확인합니다. 그럴 경우 기계는 종료되고 결과를 리턴합니다. 상태가 End State가 아니면 해석기는 다음에 실행할 상태를 결정하기 위해 "다음"필드를 찾습니다. 터미널 상태 (성공, 실패 또는 종료 상태)에 도달하거나 런타임 오류가 발생할 때까지이 프로세스를 반복합니다.
 
-JSON을 직접 저작하여 상태 머신 정의를 구성하는 경우 [statelint](https://github.com/awslabs/statelint) 도구를 사용하여 상태 머신을 만들기 전에 JSON의 유효성을 검사해야합니다.
+JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [statelint](https://github.com/awslabs/statelint) 도구를 사용하여 상태 머신을 만들기 전에 JSON의 유효성을 검사해야합니다.
 
 ### 1A 단계 : AWS 람다 작업 상태 추가
 

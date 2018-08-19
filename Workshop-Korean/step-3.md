@@ -19,7 +19,7 @@
 <details>
 <summary><strong> 힌트를 얻기 위해 확장 </strong></summary><p>
 
-- 첫 번째 단계는 *Parallel* 상태의 유형을 **Pass** 에서 **Parallel** 로 변경하는 것입니다.
+- 첫번째 단계는 *Parallel* 상태의 유형을 **Pass** 에서 **Parallel** 로 변경하는 것입니다.
 
 - **병렬** 상태 내의 병렬 작업은 객체의 배열로 지정되며 각각의 객체는 자체 포함 된 상태 머신 객체입니다.
 

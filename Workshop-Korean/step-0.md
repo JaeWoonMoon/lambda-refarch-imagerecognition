@@ -31,15 +31,15 @@ Region| Code | Launch
 
 1. **옵션** 페이지에서 모두 기본값 그대로 두고 **다음**을 클릭하세요.
 
-1. **검토** 페이지에서 확인란을 선택하여 CloudFormation이 IAM 리소스를 만들고 **변경 세트 만들기**를 클릭하세요.
+1. **검토** 페이지에서 CloudFormation이 IAM 리소스를 생성 확인란을 선택하 **변경 세트 만들기**를 클릭하세요.
 	![IAM 스크린 샷 승인](./images/0a-cfn-create-change-set.png)
 
-	이 템플릿은 람다가 처리해야하는 자원에 대한 적절한 사용 권한을 부여하는 많은 IAM 역할을 작성합니다.
+	>이 템플릿은 람다가 처리해야 하는 리소스에 대한 적절한 사용 권한을 부여하는 많은 IAM 역할을 작성합니다.
 
 1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고 **실행**을 클릭하세요.
 	![Change Change Set Screenshot](./images/0a-cfn-execute-change-set.png)
 
-1. `sfn-workshop-setup` 스택이 `CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요. (새로 생성된 스택을 보려면 refresh 버튼을 클릭해야 할 수도 있습니다).
+1. `sfn-workshop-setup` 스택이 `CREATE_COMPLETE`의 상태에 도달할 때까지 기다리세요. (새로 생성된 스택을 보려면 새로고침 버튼을 클릭해야 할 수도 있습니다).
 </details>
 
 	

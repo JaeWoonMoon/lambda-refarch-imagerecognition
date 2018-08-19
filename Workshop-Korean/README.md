@@ -14,10 +14,10 @@
 ## 지침
 
 * [0 단계: 리소스 설정](step-0.md)
-* [1 단계: AWS Step Functions 상태 머신에 첫 번째 람다 단계 추가](step-1.md)
+* [1 단계: AWS Step Functions 상태 머신 추가](step-1.md)
 * [2 단계: 상태 머신에 분기 로직 추가](step-2.md)
 * [3 단계: 워크 플로우에 병렬 처리 추가](step-3.md)
 * [4 단계: 레이블 및 이미지 메타 데이터 유지](step-4.md)
 * [5 단계: S3 이벤트 실행 시작](step-5.md)
 * [6 단계: 웹 응용 프로그램 빌드 및 실행](step-6.md)
-* [정리](clean-up.md)
+* [리소스 정리](clean-up.md)

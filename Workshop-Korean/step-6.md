@@ -12,24 +12,24 @@
 
 Region| Code | Launch
 ------|------|-------
-Tokyo | <span style="font-family:'Courier';">ap-northeast-2</span> | [![Launch Step 6 in ap-northeast-2](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-ap-northeast-2.amazonaws.com/sfn-image-workshop-ap-northeast-2/cloudformation/step0-webapp.yaml)
+서울 | <span style="font-family:'Courier';">ap-northeast-2</span> | [![Launch Step 6 in ap-northeast-2](images/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/new?stackName=sfn-workshop-setup-webapp&templateURL=https://s3-ap-northeast-2.amazonaws.com/sfn-image-workshop-ap-northeast-2/cloudformation/step0-webapp.yaml)
 
 
 #### CloudFormation 실행 지침
 
 1. 위의 **Launch Stack** 링크를 클릭하세요.
 
-1. Select Template 페이지에서**Next**를 클릭하세요.
+1. Select Template 페이지에서 **Next**를 클릭하세요.
 
-1. 세부 정보 지정 페이지에서 모든 기본값을 그대로두고**다음**을 클릭합니다.
+1. 세부 정보 지정 페이지에서 모든 기본값을 그대로 두고 **다음**을 클릭합니다.
 
-1. 옵션 페이지에서 기본값을 모두 그대로두고**다음**을 클릭하세요.
+1. 옵션 페이지에서 기본값을 모두 그대로 두고 **다음**을 클릭하세요.
 
-1. 검토 페이지에서 확인란을 선택하여 CloudFormation이 IAM 리소스를 만들고**변경 집합 만들기**를 클릭하는지 확인합니다.
+1. 검토 페이지에서 확인란을 선택하여 CloudFormation이 IAM 만들고 **변경 집합 만들기**를 클릭하세요.
 	![IAM 스크린 샷 승인](./images/b-cfn-create-change-set.png)
 
 
-1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고**실행**을 클릭하세요.
+1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고 **실행**을 클릭하세요.
 	![변경 세트 실행 스크린 샷](./images/0b-cfn-execute-change-set.png)
 
 1. `sfn-workshop-setup-webapp` 스택이 `CREATE_COMPLETE`의 상태에 도달 할 때까지 기다리세요.
