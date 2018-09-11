@@ -6,6 +6,8 @@
 
 ![상태 시스템에 대한 IAM 역할 선택](../images/photo-processing-backend-diagram.png)
 
+> 2018년 08월 09일에 Amazon Rekognition 서울 리전 출시하였습니다. 이 [블로그](https://aws.amazon.com/ko/blogs/korea/amazon-rekognition-now-available-in-seoul-region/)에서 자세한 내용을 참고하세요. :clap::clap:
+
 ## 준비물
 
 - AWS 계정에 대한 관리 액세스
