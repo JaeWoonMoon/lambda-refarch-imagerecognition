@@ -2,7 +2,7 @@
 
 상태 머신의 첫번째 단계는 이미지 파일에 대한 추가 정보를 제공합니다. 이 파일은 워크 플로에서 수행해야하는 추가 작업 집합을 결정하는 데 사용할 수 있습니다. 예를 들어 제공된 파일이 이미지 인식 서비스에서 지원하지 않는 형식인 경우 보내세요. 유형 변환을 수행하거나 단순히 고객에게 오류 통지를 보내고 워크 플로를 종료하는 다른 람다 함수로 전달할 수 있습니다.
 
-분기를 가능하게하는 AWS 단계 함수에는 [선택 상태](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-states-choice.html)와 [오류 Try/Catches](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-errors.html)를 참조하세요. 선택 상태는 if/else 또는 case/switch 조건에 기반하여 다음 상태를 선택할 수 있습니다 (And 및 Not 및 => <연산자)의 조합을 지원합니다. 오류 Try/Catch를 사용하면 현재 실행에 의해 발생된 오류 유형에 따라 다음 상태를 선택할 수 있습니다.
+분기를 가능하게하는 AWS 단계 함수에는 [선택 상태](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-states-choice.html)와 [오류 Try/Catches](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-errors.html)를 참조하세요. 선택 상태는 if/else 또는 case/switch 조건에 기반하여 다음 상태를 선택할 수 있습니다 (And, Or, Not, =>, <)연산자 조합을 지원합니다. Error Try/Catch를 사용하면 현재 실행에 의해 발생된 오류 유형에 따라 다음 상태를 선택할 수 있습니다.
 
 이 단계에서는 Error Try/Catches 및 Choice State를 모두 사용하여 상태 확인 기능을 상태 머신에 추가합니다. 이 단계가 끝나면 상태 머신은 다음과 같이 보입니다.
 
@@ -10,7 +10,7 @@
 
 ### 2A 단계 : State Machine 정의에 분기 추가
 
-시나리오에서는 JPEG 및 PNG 형식만 지원합니다. 이미지 분석 람다 함수는 이미지 포맷을 감지할 수 있으므로 첫번째 단계 이후에 선택 상태를 사용하여 메타 데이터 추출의 결과를 평가하고 분기 결정을 내릴 수 있습니다. 이미지 처리 라이브러리에는 분석기가 없는 다른 파일 유형의 경우 람다 함수에서 예외가 발생합니다. 이제 Choice State와 Error Try / Catch를 사용하여 결합할 수 있습니다.
+시나리오에서는 JPEG 및 PNG 형식만 지원합니다. 이미지 분석 람다 함수는 이미지 포맷을 감지할 수 있으므로 첫번째 단계 이후에 선택 상태를 사용하여 메타 데이터 추출의 결과를 평가하고 분기 결정을 내릴 수 있습니다. 이미지 처리 라이브러리에는 분석기가 없는 다른 파일 유형의 경우 람다 함수에서 예외가 발생합니다. 이제 Choice State와 Error Try/Catch를 사용하여 결합할 수 있습니다.
 
 1. 상태 머신 정의가있는 텍스트 편집기로 돌아가세요. 다음과 같이 표시되어야합니다.
 	
@@ -62,9 +62,9 @@
 	    }
 	</pre>
 
-	> 맞춤 오류 코드를 정의하는 방법은 [블로그 게시물](https://aws.amazon.com/blogs/compute/automating-aws-lambda-function-error-handling-with-aws-step-functions/)을 참조하세요. 람다 함수에서 다른 언어로.
+	> Lambda 함수에서 사용자 정의 오류 코드를 정의하는 방법은 [블로그 게시물](https://aws.amazon.com/blogs/compute/automating-aws-lambda-function-error-handling-with-aws-step-functions/)을 참조하세요.
 
-1. JPEG 및 PNG 이미지 만 추가로 처리 할 수 ​​있도록하려면 이미지 형식이 JPEG 또는 PNG가 아닌 경우 *NotSupportedImageType* Fail 상태로 지정하는 선택 상태를 만듭니다.
+1. JPEG 및 PNG 이미지 만 추가로 처리 할 수 있도록하려면 이미지 형식이 JPEG 또는 PNG가 아닌 경우 *NotSupportedImageType* Fail 상태로 지정하는 선택 상태를 만듭니다.
 
 	**NotSupportedImageType** 실패 상태 다음에 **Choice** 상태를 추가하세요.
 
