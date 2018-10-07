@@ -29,7 +29,6 @@ Region| Code | Launch
 
 	![IAM 스크린 샷 승인](./images/0b-cfn-create-change-set.png)
 
-
 1. 변경 사항 설정이 완료되면 컴퓨팅 변경 사항을 완료하고 **실행**을 클릭하세요.
 
 	![변경 세트 실행 스크린 샷](./images/0b-cfn-execute-change-set.png)
