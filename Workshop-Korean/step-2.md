@@ -12,7 +12,7 @@
 
 시나리오에서는 JPEG 및 PNG 형식만 지원합니다. 이미지 분석 람다 함수는 이미지 포맷을 감지할 수 있으므로 첫번째 단계 이후에 선택 상태를 사용하여 메타 데이터 추출의 결과를 평가하고 분기 결정을 내릴 수 있습니다. 이미지 처리 라이브러리에는 분석기가 없는 다른 파일 유형의 경우 람다 함수에서 예외가 발생합니다. 이제 Choice State와 Error Try/Catch를 사용하여 결합할 수 있습니다.
 
-1. 상태 머신 정의가있는 텍스트 편집기로 돌아가세요. 다음과 같이 표시되어야합니다.
+1. 상태 머신 정의가 있는 텍스트 편집기로 돌아가세요. 다음과 같이 표시되어야 합니다.
 	
 	```JSON
 	{
@@ -29,7 +29,7 @@
 	}
 	```
 
-1. 상태 시스템에 추가 할 다음 단계는 실패 상태인 **NotSupportedImageType**입니다. 이 단계는 종료되고 이미지 유형이 지원되지 않기 때문에 진행할 수없는 실행에 대한 실패를 표시합니다.
+1. 상태 시스템에 추가 할 다음 단계는 실패 상태인 **NotSupportedImageType**입니다. 이 단계는 종료되고 이미지 유형이 지원되지 않기 때문에 진행할 수 없는 실행에 대한 실패를 표시합니다.
 
 	상태 머신 정의에 **ExtractImageMetadata** 상태 다음에 **Fail** 상태를 추가하세요.
 
@@ -66,7 +66,7 @@
 
 1. JPEG 및 PNG 이미지 만 추가로 처리 할 수 있도록하려면 이미지 형식이 JPEG 또는 PNG가 아닌 경우 *NotSupportedImageType* Fail 상태로 지정하는 선택 상태를 만듭니다.
 
-	**NotSupportedImageType** 실패 상태 다음에 **Choice** 상태를 추가하세요.
+	**NotSupportedImageType** 실패 상태 다음에 **Choices** 상태를 추가하세요.
 
 	```JSON
 	  "ImageTypeCheck": {
@@ -87,7 +87,7 @@
 	  },
 	```
 	
-	또한 **Choice** 상태는 **ExtractImageMetadata** 상태를 따라야하므로 첫번째 상태를 업데이트하고 다음 단계로 선택 상태에 대한 포인터로 "End": true를 대체하세요. "ImageTypeCheck"`:
+	또한 **Choices** 상태는 **ExtractImageMetadata** 상태를 따라야하므로 첫번째 상태를 업데이트하고 다음 단계로 선택 상태에 대한 포인터로 "End": true를 대체하세요. "ImageTypeCheck"`:
 
 	<pre>
 		"ExtractImageMetadata":{  
@@ -110,7 +110,7 @@
 
 	
 	
-1. 선택 사항 상태는 단계 기능 상태 시스템의 종료 상태가 아니어야합니다. 따라서 우리는 선택 상태 다음 상태를 가져야합니다. 지금은 자리 표시 자 **패스** 상태를 만들어 병렬 처리 단계로 바꿉니다. (**ImageTypeCheck** 상태에서이 상태에 대한 '다음'포인터가 이미 있음).
+1. 선택 사항 상태는 단계 기능 상태 시스템의 종료 상태가 아니어야합니다. 따라서 우리는 선택 상태 다음 상태를 가져야합니다. 지금은 자리 표시 자 **패스** 상태를 만들어 병렬 처리 단계로 바꿉니다. (**ImageTypeCheck** 상태에서 이 상태에 대한 '다음' 포인터가 이미 있음).
 	
 	``````JSON
 	    "Parallel": {
@@ -122,7 +122,7 @@
 	    }
     ```
 	
-1. [this one](https://jsonformatter.curiousconcept.com/)과 같은 JSON 유효성 검사기와 포맷터를 사용하여 JSON 형식이 올바른지 확인하세요.
+1. [이것](https://jsonformatter.curiousconcept.com/)과 같은 JSON 유효성 검사기와 포맷터를 사용하여 JSON 형식이 올바른지 확인하세요.
 
 
 ### 2B 단계 : AWS 스텝 함수 상태 머신 업데이트
@@ -191,7 +191,7 @@
 	}
 	```
 	
-	우리는 *ExtractImageMetadata* lambda 함수가 `ImageIdentifyError`를 던져 버릴 것을 기대합니다. ImageIdentifyError는 **Choice** 상태를 치지 않고 플로우를 실패 상태로 유도합니다
+	우리는 *ExtractImageMetadata* lambda 함수가 `ImageIdentifyError`를 던져 버릴 것을 기대합니다. ImageIdentifyError는 **Choices** 상태를 거치지 않고 플로우를 실패 상태로 유도합니다
 	
 	<img src="images/2c-test-catch-failed.png" width="50%">
 	

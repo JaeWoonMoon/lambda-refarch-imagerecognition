@@ -17,15 +17,15 @@
 
 1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요. AWS Region 선택이 지금까지 작업 한 AWS Region 선택과 일치하는지 확인하세요.
 
-1. 대시 보드에서 상태 시스템을 찾습니다. 이전 단계에 대한 지시 사항을 따른 경우 *ImageProcessing*
+1. 대시 보드에서 상태 시스템을 찾습니다. 이전 단계에 대한 지시 사항을 따른 경우 *ImageProcessing* 이어야 합니다.
 
-1. 페이지의 오른쪽 상단 모서리에 있는 **State Machine Arn**:
+1. 페이지의 오른쪽 상단 모서리에 있는 **State Machine Arn** 을 찾아서 복사하십시오.
 
 	<img src="images/5a-state-machine-arn-newer.png" width="90%">
 
-1. [AWS Lambda 관리 콘솔](https://console.aws.amazon.com/lambda/home)로 이동하여 이름이 'StartExecution'으로 끝나는 람다 함수를 찾으세요. 이것이 상태 시스템을 트리거하는 것입니다. 해당 이름의 링크를 클릭하여 선택하세요.
+1. [AWS Lambda 관리 콘솔](https://console.aws.amazon.com/lambda/home)로 이동하여 이름이 `StartExecution` 으로 끝나는 람다 함수를 찾으세요. 이것이 상태 시스템을 트리거하는 것입니다. 해당 이름의 링크를 클릭하여 선택하세요.
 
-1. 실행되는 특정 AWS Step Function 상태 머신은 구성 가능한 환경 변수로 람다 함수에 전달됩니다. **환경 변수** 섹션으로 스크롤하세요. 그것을 확장하고 자리 표시 자 값`FILL_WITH_YOUR_VALUE`을 상태 머신의 ARN으로 변경하세요.
+1. 실행되는 특정 AWS Step Function 상태 머신은 구성 가능한 환경 변수로 람다 함수에 전달됩니다. **환경 변수** 섹션으로 스크롤하여 `STATE_MACHINE_ARN`의 키값을 찾아 `FILL_WITH_YOUR_VALUE`을 상태 머신의 ARN으로 변경하세요.
 
 	<img src="images/5a-enviroment-variables.png" width="90%">
 
@@ -60,21 +60,21 @@
 	- **Send to**: Lambda Function
 	- **Lambda**: sfn-workshop-setup-StartExecution
 
-	>**Note:**the**Prefix**parameter is critical: this limits the event trigger to only trigger processing workflows when an image file lands in the "Incoming/" prefix. Because the thumbnail generation process uploads the thumbnails to the same S3 bucket, without limiting the prefix, the thumbnail upload will trigger another workflow and causes an infinite loop.
-	
+	>**참고** : 매개 변수는 중요합니다. 즉, 이미지 파일이 "Incoming/" **접두사**로 처리 될 때만 처리 흐름을 트리거하도록 이벤트 트리거를 제한합니다. 썸네일 생성 프로세스는 접두사를 제한하지 않고 동일한 S3 버킷에 썸네일을 업로드하므로 썸네판 업로드는 다른 워크 플로를 트리거하고 무한 루프를 발생시킵니다.
+
 	<img src="images/5b-s3-event-configuration.png" width="60%">
 	
-1.**저장**을 클릭하세요.
+1. **저장**을 클릭하세요.
 
 ### 5C 단계 : S3에 사진을 업로드하여 이벤트 트리거 테스트
 
 이제 이벤트를 테스트 할 준비가되었습니다! S3 버킷 내의 이미지를 "Incoming"폴더에 업로드하고 Step Functions 콘솔에서 실행을 확인하세요!
 
-1. S3 관리 콘솔에서 랜딩 버켓의 'Incoming/'프리픽스로 이동하여 **업로드**를 클릭하세요. 지원되는 형식 (JPEG 또는 PNG)의 이미지를 선택하세요. **다음을 클릭하세요**
+1. S3 관리 콘솔에서 랜딩 버켓의 'Incoming/'프리픽스로 이동하여 **업로드**를 클릭하세요. 지원되는 형식 (JPEG 또는 PNG)의 이미지를 선택하세요. **다음을** 클릭하세요.
 
 1. **다음** 및 **업로드**를 클릭하세요.
 
-1. 상태 시스템이 트리거되고 성공적으로 실행되는지 확인하세요. DynamoDB에 저장된 축소판 및 데이터를 확인합니다.
+1. 상태 시스템이 트리거되고 성공적으로 실행되는지 확인하세요. DynamoDB에 저장된 쌈네일 및 데이터를 확인합니다.
 
 	<img src="images/5c-state-machine-execution.png" width="90%">
 

@@ -1,12 +1,12 @@
 ## 3 단계 : 워크 플로우에 병렬 처리 추가
 
-메타 데이터를 추출하고 확인한 후 이제 상태 머신에 몇 가지 단계를 추가할 준비가 되었습니다. 섬네일 이미지 만들기, 이미지 인식 및 메타 데이터 색인 유지/영구화입니다. 섬네일 이미지 인식은 서로 의존하지 않고 병렬로 발생할 수 있으며 [평행 상태](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html)을 참조하세요.
+메타 데이터를 추출하고 확인한 후 이제 상태 머신에 몇 가지 단계를 추가할 준비가 되었습니다. 섬네일 이미지 만들기, 이미지 인식 및 메타 데이터 색인 유지/영구화입니다. 섬네일 이미지 인식은 서로 의존하지 않고 병렬로 발생할 수 있으며 [병렬 상태](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html)을 참조하세요.
 
 <img src="images/3-state-machine-parallel.png" width="60%">
 
 ### 3A 단계 : 상태 머신 정의 업데이트
 
-이제 상태 머신에 단계를 점진적으로 추가, 배치 및 테스트하고, 현재 상태 머신에 병렬 단계를 추가하는 몇가지 경험을 얻었습니다. (마지막 상태의 최종 JSON에서 내보내거나 가져 오는 것을 잊지 마세요). )을 사용하여 엄지 손톱과 이미지 인식을 동시에 수행 할 수 있습니다.
+이제 상태 머신에 단계를 점진적으로 추가, 배치 및 테스트하고 현재 상태 머신에 병렬 단계를 추가하는 몇가지 경험을 얻었습니다. (마지막 상태의 최종 JSON에서 내보내거나 가져 오는 것을 잊지 마세요.) 상태 머신을 사용하여 썸네일 이미지와 이미지 인식을 동시에 수행 할 수 있습니다.
 
 구문에 대한 도움이 필요하면 다음 설명서를 살펴보세요.
 
@@ -19,7 +19,7 @@
 <details>
 <summary><strong> 힌트를 얻기 위해 확장 </strong></summary><p>
 
-- 첫번째 단계는 *Parallel* 상태의 유형을 **Pass** 에서 **Parallel** 로 변경하는 것입니다.
+- 첫번째 단계는 *Parallel* 상태의 유형을 **Pass** 에서 **Parallel** 로 변경하세요.
 
 - **병렬** 상태 내의 병렬 작업은 객체의 배열로 지정되며 각각의 객체는 자체 포함 된 상태 머신 객체입니다.
 
@@ -31,16 +31,17 @@
 	}
 	```
 
-- 각 분기에 대해 해당 람다 함수를 트리거하는 **Task** 상태가 있는 상태 머신 개체를 만듭니다.
-	심층 학습 기반 이미지 분석 [Amazon Rekognition](https://aws.amazon.com/rekognition/) 서비스와 특히 [DetectLabels API](http://docs.aws.amazon.com/rekognition/latest/dg/API_DetectLabels.html)를 활용하는 ``sfn-workshop-setup-DetectLabel`` 에서 처리된 이미지에 표시할 개체와 개념에 대한 메타 데이터를 얻을 수 있습니다.
+- 각 분기에 대해 해당 람다 함수를 트리거하는 **Task** 상태가 있는 상태 머신 개체를 만드세요.
 
-	- 섬네일 이미지를 생성을 위해 [GraphicsMagick for node.js](http://aheckmann.github.io/gm/docs.html) 라이브러리에 의존하는 ``sfn-workshop-setup-Thumbnail``
+	- ``sfn-workshop-setup-DetectLabel``은 심층 학습 기반 이미지 분석 [Amazon Rekognition](https://aws.amazon.com/rekognition/) 서비스 및 특히 [DetectLabels API](http://docs.aws.amazon.com/rekognition/latest/dg/API_DetectLabels.html)를 활용하여 처리 된 이미지에 어떤 개체와 개념이 표시되는지에 대한 메타 데이터를 얻습니다.
+
+    - ``sfn-workshop-setup-Thumbnail``은 섬네일 이미지를 생성을 위해 [GraphicsMagick for node.js](http://aheckmann.github.io/gm/docs.html) 라이브러리를 사용합니다.
 
 </details>
 
-이제 단계 1D를 기억할 수있는 좋은 시간이었습니다. 상태 입력을 병합하여 출력과 병합하는 방법을 배웠으므로 [AWS 단계 함수 경로](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-paths.html)
+이제 단계 1D를 기억해 두었습니다. 상태 입력을 출력과 병합하는 방법을 배웠으므로 [AWS 단계 함수 경로](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-paths.html) 기능을 사용하여 두 줄을 모두 사용할 수 있게되었습니다.
 
-특히 *Parallel* 상태에서 **ResultPath**를 사용하여 병렬 상태 머신 출력의 배열을 다운 스트림 상태에서 사용할 수있게하세요. `parallelResults` 속성을 사용하세요.
+특히 *Parallel* 상태에서 **ResultPath**를 사용하여 병렬 상태 머신 출력의 배열을 다운 스트림 상태에서 사용할 수 있게하세요. `parallelResults` 속성을 사용하세요.
 
 <details>
 <summary><strong> 힌트를 얻기 위해 확장 </strong></summary><p>
