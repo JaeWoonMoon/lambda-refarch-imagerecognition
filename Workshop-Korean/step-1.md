@@ -45,7 +45,7 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 	>
 	> 'arn:aws:lambda:ap-northeast-2:<YOUR-ACCOUNT-ID>:function:sfn-workshop-setup-ExtractMetadata`와 같은 형식이어야합니다.
 	>
-	>  **:honey_pot:TIP** 'REPLACE_WITH_YOUR_LAMBDA_ARN' 부분을 지우고 클릭하면 현재 생성되어 있는 람다 함수가 나옵니다. :satisfied:
+	>  **:honey_pot:TIP:** `REPLACE_WITH_YOUR_LAMBDA_ARN` 부분을 지우고 클릭하면 현재 생성되어 있는 람다 함수가 나옵니다. :satisfied:
 
 
 
