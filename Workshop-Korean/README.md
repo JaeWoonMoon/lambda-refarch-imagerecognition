@@ -1,6 +1,6 @@
 # AWSKRUG Data Analysis Hands-On #3 : Amazon Rekognition를 이용한 이미지 인식 태깅 서비스 만들기
 
-이 핸즈온에서는 AWS Step Functions를 사용하여 서버 없이 이미지 인식 작업 흐름을 단계별로 구축하는 방법을 배우게 됩니다.
+이 핸즈온에서는 AWS Step Functions를 사용하여 서버 없이 이미지 인식 태깅 서비스를 단계별로 구축하는 방법을 배우게 됩니다.
 
 아래 구성도에서 볼 수 있듯이 작업 흐름은 Amazon S3에 업로드된 사진을 처리하여 위치 정보, 크기/형식, 시간 등과 같은 메타 데이터를 이미지에서 추출합니다. 그런 다음 Amazon Rekognition을 사용하여 사진의 객체에 태그를 지정합니다. 동시에, 웹앱에서 사용할 섬네일 이미지를 생성합니다. AWS Step Functions는 다양한 단계를 조정하기 위해 오케스트레이션 역할을 합니다.
 
