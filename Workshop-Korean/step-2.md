@@ -137,7 +137,7 @@ Step Functions 의 첫 단계에서 이미지에 대한 상세 정보를 얻었�
 
 	<img src="images/2b-step-console-update-preview.png" width="90%">
 
-1. **업데이트**를 클릭하고 **실행**을 시작하세요.
+1. **저장**를 클릭하고 **실행 시작**을 클릭하세요.
 
 
 ### 2C 단계 : 상태 머신 실행 테스트
