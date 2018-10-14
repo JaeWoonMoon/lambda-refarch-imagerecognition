@@ -42,7 +42,7 @@ Step Functions 의 첫 단계에서 이미지에 대한 상세 정보를 얻었�
 	    },
 	```
 
-1. 다음으로, 오류 상태를 가리키는 **ExtractImageMetadata** 단계에 Error try/catch 를 추가합니다. 람다 함수는 이미지로 파싱할 수 없는 파일 유형 (예 : txt)을 만나면 `ImageIdentifyError` 유형의 오류를 발생 시키도록 작성되었습니다. Step Functions의 Error try/catch 기능을 사용하여이 오류가 발생할 때 **NotSupportedImageType** Fail 상태로 전환하도록 상태 시스템을 구성 할 수 있습니다.
+1. 다음으로, 오류 상태를 가리키는 **ExtractImageMetadata** 단계에 Error Try/Catch 를 추가합니다. 람다 함수는 이미지로 파싱할 수 없는 파일 유형 (예 : txt)을 만나면 `ImageIdentifyError` 유형의 오류를 발생 시키도록 작성되었습니다. Step Functions의 Error Try/Catch 기능을 사용하여 오류가 발생할 때 **NotSupportedImageType** Fail 상태로 전환하도록 상태 머신을 구성할 수 있습니다.
 
 	**ExtractImageMetadata** 단계에 **Catch** 블록을 추가하세요.
 	
@@ -64,7 +64,7 @@ Step Functions 의 첫 단계에서 이미지에 대한 상세 정보를 얻었�
 
 	> Lambda 함수에서 사용자 정의 오류 코드를 정의하는 방법은 [블로그 게시물](https://aws.amazon.com/blogs/compute/automating-aws-lambda-function-error-handling-with-aws-step-functions/)을 참조하세요.
 
-1. JPEG 및 PNG 이미지 만 추가로 처리 할 수 있도록하려면 이미지 형식이 JPEG 또는 PNG가 아닌 경우 *NotSupportedImageType* Fail 상태로 지정하는 선택 상태를 만듭니다.
+1. JPEG 및 PNG 이미지만 추가로 처리할 수 있도록하려면 이미지 형식이 JPEG 또는 PNG가 아닌 경우 *NotSupportedImageType* Fail 상태로 지정하는 선택 상태를 만듭니다.
 
 	**NotSupportedImageType** 실패 상태 다음에 **Choices** 상태를 추가하세요.
 
