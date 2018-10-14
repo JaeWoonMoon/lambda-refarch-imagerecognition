@@ -42,7 +42,7 @@ Step Functions 의 첫 단계에서 이미지에 대한 상세 정보를 얻었�
 	    },
 	```
 
-1. 다음으로, 오류 상태를 가리키는 **ExtractImageMetadata** 단계에 try/catch 오류를 추가합니다. 람다 함수는 이미지로 파싱할 수 없는 파일 유형 (예 : txt)을 만나면 `ImageIdentifyError` 유형의 오류를 발생 시키도록 작성되었습니다. Step Functions의 Error try/catch 기능을 사용하여이 오류가 발생할 때 **NotSupportedImageType** Fail 상태로 전환하도록 상태 시스템을 구성 할 수 있습니다.
+1. 다음으로, 오류 상태를 가리키는 **ExtractImageMetadata** 단계에 Error try/catch 를 추가합니다. 람다 함수는 이미지로 파싱할 수 없는 파일 유형 (예 : txt)을 만나면 `ImageIdentifyError` 유형의 오류를 발생 시키도록 작성되었습니다. Step Functions의 Error try/catch 기능을 사용하여이 오류가 발생할 때 **NotSupportedImageType** Fail 상태로 전환하도록 상태 시스템을 구성 할 수 있습니다.
 
 	**ExtractImageMetadata** 단계에 **Catch** 블록을 추가하세요.
 	
