@@ -22,7 +22,30 @@ AWS Step Functions 상태 머신을 작성하여 처리 단계를 조정하려�
 
 JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [statelint](https://github.com/awslabs/statelint) 도구를 사용하여 상태 머신을 만들기 전에 JSON의 유효성을 검사해야합니다.
 
-### 1A 단계 : AWS 람다 작업 상태 추가
+### 1A 단계 : 초기 AWS 단계 함수 작성 상태 머신
+
+1. [IAM](https://console.aws.amazon.com/iam/home) 로 이동하세요.
+
+1. 역활 메뉴에서 **역할 만들기** 버튼을 클릭하세요.
+
+1. 이 역할을 사용할 서비스 선택에서 **Step Functions**을 선택하고 **다음: 권환**을 클릭하세요.
+
+1. 역할 만들기에서 기본값으로 두고 **다음: 검토**을 클릭하세요.
+
+1. 역할 이름을 `StepFunctionsLambdaRole`을 입력하고 **역할 만들기**를 클릭하세요.
+
+1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요.
+
+1. 이전에 AWS 단계 함수를 사용하지 않았다면 시작 페이지를 볼 수 있습니다. 이 경우 **시작하기**를 클릭하면 새 상태 머신을 만드는 페이지로 연결됩니다. 그렇지 않으면 **상태 머신 만들기** 버튼을 클릭하세요.
+
+1. 상태 머신 이름으로 `ImageProcessing`을 입력하세요.
+
+1. **기존 역할 사용**을 선택하여 생성한 `StepFunctionsLambdaRole` IAM 역할을 선택하세요.
+
+	![IAM 역할 선택](./images/3-create-statemachine-select-role.png)
+
+
+### 1B 단계 : AWS 람다 작업 상태 추가
 
 1. 원하는 텍스트 편집기에서 JSON으로 상태 머신 정의를 시작하세요.
 
@@ -47,31 +70,6 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 	>
 	>  **:honey_pot:TIP:** `REPLACE_WITH_YOUR_LAMBDA_ARN` 부분을 지우고 클릭하면 현재 생성되어 있는 람다 함수가 나옵니다. :satisfied:
 
-
-
-### 1B 단계 : 초기 AWS 단계 함수 작성 상태 머신
-
-1. [IAM](https://console.aws.amazon.com/iam/home) 로 이동하세요.
-
-1. 역활 메뉴에서 **역할 만들기** 버튼을 클릭하세요.
-
-1. 이 역할을 사용할 서비스 선택에서 **Step Functions**을 선택하고 **다음: 권환**을 클릭하세요.
-
-1. 역할 만들기에서 기본값으로 두고 **다음: 검토**을 클릭하세요.
-
-1. 역할 이름을 `StepFunctionsLambdaRole`을 입력하고 **역할 만들기**를 클릭하세요.
-
-1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요.
-
-1. 이전에 AWS 단계 함수를 사용하지 않았다면 시작 페이지를 볼 수 있습니다. 이 경우 **시작하기**를 클릭하면 새 상태 머신을 만드는 페이지로 연결됩니다. 그렇지 않으면 **상태 머신 만들기** 버튼을 클릭하세요.
-
-1. 상태 머신 이름으로 `ImageProcessing`을 입력하세요.
-
-1. **기존 역할 사용**을 선택하여 생성한 `StepFunctionsLambdaRole` IAM 역할을 선택하세요.
-
-	![IAM 역할 선택](./images/3-create-statemachine-select-role.png)
-
-1. 1A 단계에서 확인한 JSON에 붙여넣기 하세요.
 
 1. **Visual Workflow** 옆의 &#x21ba; 아이콘을 클릭하여 상태 머신의 시각적 표현을 새로 고칩니다.
 
