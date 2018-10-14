@@ -8,7 +8,7 @@ Step Functions 의 첫 단계에서 이미지에 대한 상세 정보를 얻었�
 
 <img src="images/2-branching-logic-state-machine.png" width="50%">
 
-### 2A 단계 : State Machine 정의에 분기 추가
+### 2A 단계 : 상태 머신 정의에 분기 추가
 
 시나리오에서는 JPEG 및 PNG 형식만 지원합니다. 이미지 분석 람다 함수는 이미지 포맷을 감지할 수 있으므로 첫번째 단계 이후에 선택 상태를 사용하여 메타 데이터 추출의 결과를 평가하고 분기 결정을 내릴 수 있습니다. 이미지 처리 라이브러리에는 분석기가 없는 다른 파일 유형의 경우 람다 함수에서 예외가 발생합니다. 이제 Choice State와 Error Try/Catch를 사용하여 결합할 수 있습니다.
 
