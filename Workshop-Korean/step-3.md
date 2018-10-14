@@ -1,6 +1,6 @@
 ## 3 단계 : 워크 플로우에 병렬 처리 추가
 
-메타 데이터를 추출하고 확인한 후 이제 상태 머신에 몇 가지 단계를 추가할 준비가 되었습니다. 섬네일 이미지 만들기, 이미지 인식 및 메타 데이터 색인 유지/영구화입니다. 섬네일 이미지 인식은 서로 의존하지 않고 병렬로 발생할 수 있으며 [병렬 상태](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html)을 참조하세요.
+메타 데이터를 추출하고 확인한 후 이제 상태 머신에 몇 가지 단계를 추가할 준비가 되었습니다. 섬네일 이미지 만들기, 이미지 인식 및 메타 데이터 저장/인덱싱을 합니다. 섬네일 생성 및 이미지 인식은 서로 의존하지 않기 때문에 [병렬 상태](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html)를 활용해서 동시에 실행 시킬 수 있습니다.
 
 <img src="images/3-state-machine-parallel.png" width="60%">
 
