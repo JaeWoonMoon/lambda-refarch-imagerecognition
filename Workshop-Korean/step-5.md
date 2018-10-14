@@ -54,10 +54,10 @@
 1. **알림 추가**를 클릭하세요.
 
 1. 다음 매개 변수를 입력하세요.
-	- **Name**: ExecuteStateMachine
-	- **Events**: ObjectCreate(All)
-	- **Prefix**: Incoming/
-	- **Send to**: Lambda Function
+	- **이름**: ExecuteStateMachine
+	- **이벤트**: ObjectCreate(모두)
+	- **접두사**: Incoming/
+	- **전송 대상**: Lambda Function
 	- **Lambda**: sfn-workshop-setup-StartExecution
 
 	>**참고** : 매개 변수는 중요합니다. 즉, 이미지 파일이 "Incoming/" **접두사**로 처리 될 때만 처리 흐름을 트리거하도록 이벤트 트리거를 제한합니다. 썸네일 생성 프로세스는 접두사를 제한하지 않고 동일한 S3 버킷에 썸네일을 업로드하므로 썸네판 업로드는 다른 워크 플로를 트리거하고 무한 루프를 발생시킵니다.
