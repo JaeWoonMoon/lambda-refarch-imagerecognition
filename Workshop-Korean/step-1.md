@@ -122,7 +122,7 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 
 - **ResultPath** JSON 경로 표현식이 상태 입력의 항목과 일치하지 않으면 해당 항목이 입력에 추가됩니다. 이 항목에는 상태 작업을 실행 한 결과가 포함됩니다. 확장된 입력이 상태 출력에 사용 가능하게됩니다.
 
-이제 `$.extractedMetadata`를 상태 머신에 추가 한 단계의 결과 경로로 추가하세요.
+이제 이미 생성한 상태 머신에 **ResultPath**에 `$.extractedMetadata`를 추가하세요.
 
 <details>
 <summary><strong> 단계별 지침 펼치기 </strong> </summary><p>
