@@ -64,7 +64,7 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 	```	
 
 1. JSON에서 `REPLACE_WITH_YOUR_LAMBDA_ARN` 문자열을 메타 데이터 추출 AWS 람다 함수의 ARN으로 대체합니다.
-	> 메타 데이터 추출 람다 함수의 ARN을 찾으려면 AWS CloudFormation 콘솔에서 **sfn-workshop-setup** 스택으로 이동하고 출력 섹션에서 **ExtractMetadata**Lambda를 찾습니다.
+	> 메타 데이터 추출 람다 함수의 ARN을 찾으려면 AWS CloudFormation 콘솔에서 **sfn-workshop-setup** 스택으로 이동하고 출력 섹션에서 **ExtractMetadata** 람다를 찾습니다.
 	>
 	> `arn:aws:lambda:ap-northeast-2:<YOUR-ACCOUNT-ID>:function:sfn-workshop-setup-ExtractMetadata`와 같은 형식이어야합니다.
 	>
