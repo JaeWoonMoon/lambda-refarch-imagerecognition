@@ -92,13 +92,11 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 	  "s3Key": "tests/1_cactus.jpg"
 	}
 	```
-
-	> 's3Bucket' 및 's3Key` 필드는 Amazon S3 버킷명과 사진이 저장되는 위치를 알려줍니다.
-
 	`s3Bucket` 필드의 경우, **sfn-workshop-setup** 스택에서 **출력** 탭에 `PhotoRepoS3Bucket` 키의 값을 보세요.
-
-	테스트 입력 JSON을 메모장 또는 텍스트 편집기에 저장하세요. 이후 단계에서 다시 사용하기 때문입니다.
-
+	
+	> 's3Bucket' 및 's3Key` 필드는 Amazon S3 버킷명과 사진이 저장되는 위치를 알려줍니다.
+	> **:honey_pot:TIP:** 테스트 입력 JSON을 메모장 또는 텍스트 편집기에 저장하세요. 이후 단계에서 다시 사용하기 때문입니다.
+	        
 	**실행 시작**을 클릭하세요.
 
 
