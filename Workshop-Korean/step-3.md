@@ -19,9 +19,9 @@
 <details>
 <summary><strong> 힌트를 얻기 위해 확장 </strong></summary><p>
 
-- 첫번째 단계는 *Parallel* 상태의 유형을 **Pass** 에서 **Parallel** 로 변경하세요.
+- 첫번째 단계는 *Parallel State* 의 유형을 **Pass** 에서 **Parallel** 로 변경하세요.
 
-- **병렬** 상태 내의 병렬 작업은 객체의 배열로 지정되며 각각의 객체는 자체 포함 된 상태 머신 객체입니다.
+- **Parallel State** 내의 병렬 작업은 상태 머신 객체의 배열로 입력됩니다.
 
 	```JSON
 	"Parallel": {
@@ -33,15 +33,15 @@
 
 - 각 분기에 대해 해당 람다 함수를 트리거하는 **Task** 상태가 있는 상태 머신 개체를 만드세요.
 
-	- ``sfn-workshop-setup-DetectLabel``은 심층 학습 기반 이미지 분석 [Amazon Rekognition](https://aws.amazon.com/rekognition/) 서비스 및 특히 [DetectLabels API](http://docs.aws.amazon.com/rekognition/latest/dg/API_DetectLabels.html)를 활용하여 처리 된 이미지에 어떤 개체와 개념이 표시되는지에 대한 메타 데이터를 얻습니다.
+	- ``sfn-workshop-setup-DetectLabel``은 딥러닝 기반 이미지 분석 [Amazon Rekognition](https://aws.amazon.com/rekognition/) 서비스 및 특히 [DetectLabels API](http://docs.aws.amazon.com/rekognition/latest/dg/API_DetectLabels.html)를 활용하여 처리 된 이미지에 어떤 개체와 개념이 표시되는지에 대한 메타 데이터를 얻습니다.
 
     - ``sfn-workshop-setup-Thumbnail``은 섬네일 이미지를 생성을 위해 [GraphicsMagick for node.js](http://aheckmann.github.io/gm/docs.html) 라이브러리를 사용합니다.
 
 </details>
 
-이제 단계 1D를 기억해 두었습니다. 상태 입력을 출력과 병합하는 방법을 배웠으므로 [AWS 단계 함수 경로](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-paths.html) 기능을 사용하여 두 줄을 모두 사용할 수 있게되었습니다.
+이제 단계 1D를 기억해 두었습니다. 상태 입력을 출력과 병합하는 방법을 배웠으므로 [AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-paths.html) 기능을 사용하여 두 줄을 모두 사용할 수 있게되었습니다.
 
-특히 *Parallel* 상태에서 **ResultPath**를 사용하여 병렬 상태 머신 출력의 배열을 다운 스트림 상태에서 사용할 수 있게하세요. `parallelResults` 속성을 사용하세요.
+특히 *Parallel State* 에서 **ResultPath**를 사용하여 병렬 상태 머신 출력의 배열을 다운 스트림 상태에서 사용할 수 있게하세요. `parallelResults` 속성을 사용하세요.
 
 <details>
 <summary><strong> 힌트를 얻기 위해 확장 </strong></summary><p>
