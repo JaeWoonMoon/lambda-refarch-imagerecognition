@@ -5,9 +5,9 @@
 
 ### 4A 단계 : DynamoDB에 메타 데이터를 저장하는 단계 추가
 
-이 부분에서는 다시 JSON을 수동으로 편집 할 것입니다. 이전에 3 단계에서 작성한 JSON으로 이동하여 작성합니다. 여기에서 DynamoDB에 모든 것을 저장하는 람다 함수 `sfn-workshop-setup-PersistDDB`를 실행하기 위해 상태 시스템에 한 단계 더 추가하십시오.
+이 부분에서는 다시 JSON을 수동으로 편집 할 것입니다. 이전에 3 단계에서 작성한 JSON으로 이동하여 추가합니다. 여기에서 DynamoDB에 모든 것을 저장하는 람다 함수 `sfn-workshop-setup-PersistDDB`를 실행하기 위해 상태 시스템에 한 단계 더 추가하십시오.
 
-구문에 대한 도움이 필요한 경우이 설명서를 살펴보세요.
+구문에 대한 도움이 필요한 경우 이 설명서를 살펴보세요.
 
 - [작업 상태](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-task-state.html)
 - [Amazon States Language Spec](https://states-language.net/spec.html)
