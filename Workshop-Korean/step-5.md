@@ -13,7 +13,7 @@
 
 첫번째 단계는 CloudTrail을 활성화해야하기 때문에 몇 가지 추가 구성이 필요합니다. 간결성을 위해 옵션 2를 사용할 것입니다.
 
-### 5A 단계 : StartExecution을 지시합니다. Lambda 함수는 단계 기능이 트리거 될 상태 머신을 결정합니다.
+### 5A 단계 : StartExecution Lambda 함수는 어떤 상태 머신을 실행할지 결정
 
 1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요. AWS Region 선택이 지금까지 작업 한 AWS Region 선택과 일치하는지 확인하세요.
 
