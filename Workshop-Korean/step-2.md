@@ -2,7 +2,7 @@
 
 Step Functions 의 첫 단계에서 이미지에 대한 상세 정보를 얻었습니다. 이 정보를 바탕으로 어떤 추가작업을 진행할지 결정할 수 있습니다. 예를 들어, 입력된 파일이 예제에서 지원하지 않는 포멧일 경우, 포멧변환 Lambda Function으로 보내거나 혹은 에러메시지를 보내고 작업을 종료할 수 있습니다.
 
-분기를 가능하게하는 AWS 단계 함수에는 [Choice State](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-states-choice.html)와 [Error Try/Catches](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-errors.html)를 참조하세요. Choice State는 if/else 또는 case/switch 조건에 기반하여 다음 상태를 선택할 수 있습니다 (And, Or, Not, =>, <)연산자 조합을 지원합니다. Error Try/Catch를 사용하면 현재 실행에 의해 발생된 오류 유형에 따라 다음 상태를 선택할 수 있습니다.
+분기를 가능하게하는 AWS Step Functions에는 [Choice State](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-states-choice.html)와 [Error Try/Catches](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-errors.html)를 참조하세요. Choice State는 if/else 또는 case/switch 조건에 기반하여 다음 상태를 선택할 수 있습니다 (And, Or, Not, =>, <)연산자 조합을 지원합니다. Error Try/Catch를 사용하면 현재 실행에 의해 발생된 오류 유형에 따라 다음 상태를 선택할 수 있습니다.
 
 이 단계에서는 Error Try/Catches 및 Choice State를 모두 사용하여 상태 확인 기능을 상태 머신에 추가합니다. 이 단계가 끝나면 상태 머신은 다음과 같이 보입니다.
 
