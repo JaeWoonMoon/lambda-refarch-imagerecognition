@@ -47,7 +47,7 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 
 	![IAM 역할 선택](./images/3-create-statemachine-select-role.png)
 
-1. 아래의 JSON을 복사+붙여넣기하여 상태 머신 정의를 시작하세요.
+1. 아래의 JSON을 상태 머신 정의에 복사 및 붙여넣기 하세요.
 
 	```javascript
 	{
@@ -68,7 +68,7 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 	>
 	> 'arn:aws:lambda:ap-northeast-2:<YOUR-ACCOUNT-ID>:function:sfn-workshop-setup-ExtractMetadata`와 같은 형식이어야합니다.
 	>
-	>  **:honey_pot:TIP:** `REPLACE_WITH_YOUR_LAMBDA_ARN` 부분을 지우고 클릭하면 현재 생성되어 있는 람다 함수가 나옵니다. :satisfied:
+	>  **:honey_pot:TIP:** `REPLACE_WITH_YOUR_LAMBDA_ARN` 클릭하면 현재 생성되어 있는 람다 함수가 나옵니다. :satisfied:
 
 1. **Visual Workflow** 옆의 &#x21ba; 아이콘을 클릭하여 상태 머신의 시각적 표현을 새로 고칩니다.
 
