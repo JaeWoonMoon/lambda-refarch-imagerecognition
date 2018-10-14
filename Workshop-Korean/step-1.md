@@ -116,7 +116,7 @@ JSON을 직접 작성하여 상태 머신 정의를 구성하는 경우 [stateli
 
 **Paths** 필드에 세 가지 유형이 있습니다. **InputPath**, **ResultPath**, **OutputPath**. ([documentation](https://docs.aws.amazon.com/step-functions/latest/dg/awl-ref-paths.html) 및 [Amazon States Language specification.](https://states-language.net/spec.html#path))
 
-우리의 특별한 필요에 따라 **ResultPath**필드를 사용할 것입니다. 이 필드는 데이터를 다음 상태로 전달하기 위해 정의되며, 입력 JSON의 일부가 실행 결과로 대체됩니다. (예: 람다 함수의 출력) 기본적으로 생략 된 경우 필드는`$`을 취합니다. 즉, 실행 결과는 전체 데이터가 다음에 전달되는 것을 의미합니다. OutputPath는 ResultPath의 출력을 추가로 필터링 할 수 있습니다. 이 동작은 명시 적으로 JSON 경로를 지정하여 변경할 수 있습니다.
+우리의 특별한 필요에 따라 **ResultPath**필드를 사용할 것입니다. 이 필드는 데이터를 다음 상태로 전달하기 위해 정의되며, 입력 JSON의 일부가 실행 결과로 대체됩니다. (예: 람다 함수의 출력) 기본적으로 생략 된 경우 필드는`$`을 취합니다. 즉, 실행 결과는 전체 데이터가 다음에 전달되는 것을 의미합니다. OutputPath는 ResultPath의 출력을 추가로 필터링 할 수 있습니다. 이 동작은 명시적으로 JSON 경로를 지정하여 변경할 수 있습니다.
 
 - **ResultPath** JSON 경로 표현식이 상태 입력의 항목과 일치하면 해당 입력 항목 만 상태 작업 실행 결과로 겹쳐 쓰입니다. 수정 된 전체 입력이 주 출력에 사용 가능하게됩니다.
 
