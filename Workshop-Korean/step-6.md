@@ -25,7 +25,7 @@ Region| Code | Launch
 
 1. 옵션 페이지에서 기본값을 모두 그대로 두고 **다음**을 클릭하세요.
 
-1. 검토 페이지에서 확인란을 선택하여 CloudFormation이 IAM 만들고 **변경 집합 만들기**를 클릭하세요.
+1. 검토 페이지에서 확인란을 선택하여 CloudFormation이 IAM 만들고 **변경 세트 만들기**를 클릭하세요.
 
 	![IAM 스크린 샷 승인](./images/0b-cfn-create-change-set.png)
 
