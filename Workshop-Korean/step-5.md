@@ -1,6 +1,6 @@
 ## 5 단계 : S3 이벤트에서 실행 시작
 
-마지막으로 상태 시스템이 가동됩니다! 실행을 자동화 할 차례입니다.
+마지막으로 상태 머신이 가동됩니다! 실행을 자동화 할 차례입니다.
 이미지가 S3 버킷에 업로드 될 때 상태 머신이 실행 됩니다.
 
 여기에는 두 가지 가능성이 있습니다.
@@ -17,13 +17,13 @@
 
 1. [AWS Step Functions 관리 콘솔](http://console.aws.amazon.com/states/home)로 이동하세요. AWS Region 선택이 지금까지 작업 한 AWS Region 선택과 일치하는지 확인하세요.
 
-1. 대시 보드에서 상태 시스템을 찾습니다. 이전 단계에 대한 지시 사항을 따른 경우 *ImageProcessing* 이어야 합니다.
+1. 대시 보드에서 상태 머신을 찾습니다. 이전 단계에 대한 지시 사항을 따른 경우 *ImageProcessing* 이어야 합니다.
 
 1. 페이지의 오른쪽 상단 모서리에 있는 **State Machine Arn** 을 찾아서 복사하십시오.
 
 	<img src="images/5a-state-machine-arn-newer.png" width="90%">
 
-1. [AWS Lambda 관리 콘솔](https://console.aws.amazon.com/lambda/home)로 이동하여 이름이 `StartExecution` 으로 끝나는 람다 함수를 찾으세요. 이것이 상태 시스템을 트리거하는 것입니다. 해당 이름의 링크를 클릭하여 선택하세요.
+1. [AWS Lambda 관리 콘솔](https://console.aws.amazon.com/lambda/home)로 이동하여 이름이 `StartExecution` 으로 끝나는 람다 함수를 찾으세요. 이것이 상태 머신을 트리거하는 것입니다. 해당 이름의 링크를 클릭하여 선택하세요.
 
 1. 실행되는 특정 AWS Step Function 상태 머신은 구성 가능한 환경 변수로 람다 함수에 전달됩니다. **환경 변수** 섹션으로 스크롤하여 `STATE_MACHINE_ARN`의 키값을 찾아 `FILL_WITH_YOUR_VALUE`을 상태 머신의 ARN으로 변경하세요.
 
@@ -74,7 +74,7 @@
 
 1. **다음** 및 **업로드**를 클릭하세요.
 
-1. 상태 시스템이 트리거되고 성공적으로 실행되는지 확인하세요. DynamoDB에 저장된 쌈네일 및 데이터를 확인합니다.
+1. 상태 머신이 트리거되고 성공적으로 실행되는지 확인하세요. DynamoDB에 저장된 쌈네일 및 데이터를 확인합니다.
 
 	<img src="images/5c-state-machine-execution.png" width="90%">
 
